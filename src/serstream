@@ -334,8 +334,14 @@ namespace std
 		basic_serialbuf<charT, traits, Tserial> sb;
 	};
 
-
+#ifdef ARDUINO_ARCH_MEGAAVR
+using arduino::Stream; // MegaAVR needs the explicit arduino namespace
+#else
 using ::Stream;
+#endif
+
+
+
 
 template <class charT, class traits = char_traits<charT>, class Tserial=Stream> class basic_serialbuf;
 template <class charT, class traits = char_traits<charT>, class Tserial=Stream> class basic_iserialstream;
